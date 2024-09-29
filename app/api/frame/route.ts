@@ -10,7 +10,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     return new NextResponse('Message not valid', { status: 500 });
   }
 
-  const text = message.input || '';
+
   let state = {
     page: 0,
   };
@@ -20,34 +20,29 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     console.error(e);
   }
 
-  /**
-   * Use this code to redirect to a different page
-   */
-  if (message?.button === 3) {
-    return NextResponse.redirect(
-      'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
-      { status: 302 },
-    );
-  }
+  // /**
+  //  * Use this code to redirect to a different page
+  //  */
+  // if (message?.button === 3) {
+  //   return NextResponse.redirect(
+  //     'https://www.google.com/search?q=cute+dog+pictures&tbm=isch&source=lnms',
+  //     { status: 302 },
+  //   );
+  // }
 
   return new NextResponse(
     getFrameHtmlResponse({
       buttons: [
         {
-          label: `State: ${state?.page || 0}`,
+          label: 'Back',
         },
         {
-          action: 'link',
-          label: 'OnchainKit',
-          target: 'https://onchainkit.xyz',
-        },
-        {
-          action: 'post_redirect',
-          label: 'Dog pictures',
+          label: 'Next',
         },
       ],
       image: {
-        src: `${NEXT_PUBLIC_URL}/park-1.png`,
+        src: `${NEXT_PUBLIC_URL}/park-2.png`,
+        aspectRatio: '1:1',
       },
       postUrl: `${NEXT_PUBLIC_URL}/api/frame`,
       state: {
