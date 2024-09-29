@@ -7,6 +7,9 @@ const frameMetadata = getFrameMetadata({
     {
       label: 'Next',
     },
+    {
+      label: 'hello'
+    }
   ],
   image: {
     src: `${NEXT_PUBLIC_URL}/park-1.png`,
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1>Hello there!</h1>
+      <h1>Hello there!🎩</h1>
     </>
   );
 }
